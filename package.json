@@ -1,0 +1,11 @@
+{
+    "name": "NodeMobileChat",
+    "version": "0.0.1",
+    "description": "Chat for desktop and mobile running on node",
+    "dependencies": {
+        "socket.io": "latest",
+        "express": "latest",
+        "jade": "latest"
+    },
+    "author": "Andrew Christopher Tran"
+}
