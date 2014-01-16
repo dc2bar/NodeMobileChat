@@ -1,9 +1,9 @@
 $(function(){
     var messages = [];
     var socket = io.connect('/');
-    var field = document.getElementById("field");
-    var sendButton = document.getElementById("send");
-    var content = document.getElementById("content");
+    var field = $("#field");
+    var sendButton = $("#send");
+    var content = $("#content");
 
     socket.on('message', function (data) {
         if (data.message) {
@@ -12,14 +12,14 @@ $(function(){
             for (var i = 0; i < messages.length; i++) {
                 html += messages[i] + '<br />';
             }
-            content.innerHTML = html;
+            content.text(html);
         } else {
             console.log("There is a problem:", data);
         }
     });
 
-    sendButton.onclick = function () {
-        var text = field.value;
+    sendButton.click(function () {
+        var text = field.val();
         socket.emit('send', { message: text });
-    };
+    });
 });
