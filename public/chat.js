@@ -12,7 +12,7 @@ $(function(){
             for (var i = 0; i < messages.length; i++) {
                 html += messages[i] + '<br />';
             }
-            content.text(html);
+            content.html(html);
         } else {
             console.log("There is a problem:", data);
         }
