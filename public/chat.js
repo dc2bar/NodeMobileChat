@@ -46,8 +46,8 @@ function addChat(type, data, username) {
 function updateUsersList(data) {
   var userslist = '';
   for( var id in data) {
-    var user = data[id];
-    userslist += '<div class="'+username+' userslist-line" data-sid="'+id+'"><span class="username">'+user+'</span></div>';
+    var username = data[id];
+    userslist += '<div class="'+username+' userslist-line" data-sid="'+id+'"><span class="username">'+username+'</span></div>';
   };
   return userslist;
 }
