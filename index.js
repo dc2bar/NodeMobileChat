@@ -41,11 +41,11 @@ io.sockets.on('connection', function (socket) {
   socket.on('sendChat', function (data) {
     io.sockets.emit('chatMessage', username, data);
   });
-});
 
-// When the user disconnects - TODO: think of a way to prevent mobile temporary disconnect spam
-socket.on('disconnect', function () {
-  updateUsers('delete', socket.username, socket.id)
+  // When the user disconnects - TODO: think of a way to prevent mobile temporary disconnect spam
+  socket.on('disconnect', function () {
+    updateUsers('delete', socket.username, socket.id)
+  });
 });
 
 function updateUsers(action, username, sessionID) {
