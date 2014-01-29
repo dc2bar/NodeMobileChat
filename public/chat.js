@@ -8,6 +8,8 @@ $(function () {
     console.log('disconnected from server');
   });
 
+  socket.emit('updateUsername', 'TESTUSER');
+
   socket.on('chatMessage', function (username, message) {
     var message = addChat('chat', message, username);
     content.append(message);
