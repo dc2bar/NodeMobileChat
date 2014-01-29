@@ -16,6 +16,10 @@ $(function () {
     content.append(message);
   });
 
+  socket.on('systemMessage', function (message) {
+    addChat('system', message);
+  })
+
   sendButton.click(function () {
     var text = field.val();
     socket.emit('sendChat', text);
@@ -33,5 +37,5 @@ function addChat(type, data, username) {
       message = data;
       break;
   }
-  return '<div class="'+username+' chat-line"><span class="username"></span><span class="message"></span></div>';
+  return '<div class="'+username+' chat-line"><span class="username">'+username+'</span><span class="message">'+message+'</span></div>';
 }
