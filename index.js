@@ -40,6 +40,7 @@ io.sockets.on('connection', function (socket) {
   //When this client sends a chat message
   socket.on('sendChat', function (data) {
     io.sockets.emit('chatMessage', socket.username, data);
+    console.log(socket.username + ': ' + data);
   });
 
   // When the user disconnects - TODO: think of a way to prevent mobile temporary disconnect spam
