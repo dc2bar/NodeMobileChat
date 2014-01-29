@@ -11,8 +11,8 @@ $(function () {
   socket.emit('updateUsername', 'TESTUSER');
 
   socket.on('chatMessage', function (username, message) {
-    console.log(username + ': ' + message);
     var message = addChat('chat', message, username);
+    console.log(message);
     content.append(message);
   });
 
