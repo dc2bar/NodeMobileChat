@@ -1,25 +1,34 @@
-$(function(){
-    var messages = [];
-    var socket = io.connect('/');
-    var field = $("#field");
-    var sendButton = $("#send");
-    var content = $("#content");
+$(function () {
+  var socket = io.connect('/');
+  var field = $("#field");
+  var sendButton = $("#send");
+  var content = $("#content");
 
-    socket.on('message', function (data) {
-        if (data.message) {
-            messages.push(data.message);
-            var html = '';
-            for (var i = 0; i < messages.length; i++) {
-                html += messages[i] + '<br />';
-            }
-            content.html(html);
-        } else {
-            console.log("There is a problem:", data);
-        }
-    });
+  socket.on('disconnect', function () {
+    console.log('disconnected from server');
+  });
 
-    sendButton.click(function () {
-        var text = field.val();
-        socket.emit('send', { message: text });
-    });
+  socket.on('chatMessage', function (username, message) {
+    var message = addChat('chat', message, username));
+    content.append(message);
+  });
+
+  sendButton.click(function () {
+    var text = field.val();
+    socket.emit('sendChat', text);
+  });
 });
+
+function addChat(type, data, username) {
+  var message = '';
+  switch (type) {
+    case 'system':
+      username = 'SERVER';
+      message = data;
+      break;
+    case 'chat':
+      message = data;
+      break;
+  }
+  return '<div class="'+username+' chat-line"><span class="username"></span><span class="message"></span></div>';
+}
