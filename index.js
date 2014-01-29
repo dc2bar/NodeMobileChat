@@ -30,7 +30,7 @@ io.sockets.on('connection', function (socket) {
   socket.on('updateUsername', function (username) {
     if( updateUsers('add', username, socket.id) == 'success' ) {
       socket.username = username;
-      socket.broadcast.emit('systemMessage', username + ' has connected');
+      io.sockets.emit('systemMessage', username + ' has connected');
     }
   });
 

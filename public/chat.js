@@ -17,8 +17,12 @@ $(function () {
   });
 
   socket.on('systemMessage', function (message) {
-    addChat('system', message);
-  })
+    addChat('chat', message, 'SYSTEM');
+  });
+
+  socket.on('updateUsersList', function (data) {
+    updateUsersList(data);
+  });
 
   sendButton.click(function () {
     var text = field.val();
@@ -29,13 +33,13 @@ $(function () {
 function addChat(type, data, username) {
   var message = '';
   switch (type) {
-    case 'system':
-      username = 'SERVER';
-      message = data;
-      break;
     case 'chat':
       message = data;
       break;
   }
-  return '<div class="'+username+' chat-line"><span class="username">'+username+'</span><span class="message">'+message+'</span></div>';
+  return '<div class="'+username+' chat-line"><span class="username">'+username+': </span><span class="message">'+message+'</span></div>';
+}
+
+function updateUsersList(data) {
+  console.log(data);
 }
