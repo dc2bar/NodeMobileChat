@@ -49,13 +49,19 @@ io.sockets.on('connection', function (socket) {
 });
 
 function updateUsers(action, username, sessionID) {
-  var userInList = connectedUsers.filter(function (person) { return person.username == username });
+  var userInList = false;
+  for( var key in connectedUsers ) {
+    var currentUsername = key;
+    if ( currentUsername == key ) {
+      userInList = true;
+    }
+  }
   switch(action)
   {
     case 'add':
       if( !userInList ) {
         connectedUsers[sessionID] = username;
-        socket.emit('updateUsersList',connectedUsers);
+        io.sockets.emit('updateUsersList',connectedUsers);
       } else {
         console.log('attempted to add user ' + username + ' with session id ' + sessionID + ' to active users when following user exists: ');
         console.log(userInList);
@@ -67,7 +73,7 @@ function updateUsers(action, username, sessionID) {
         console.log(userInList);
       } else {
         delete connectedUsers[sessionID];
-        socket.emit('updateUsersList',connectedUsers);
+        io.sockets.emit('updateUsersList',connectedUsers);
         io.sockets.emit('systemMessage', username + ' has disconnected.');
       }
       return 'success';
