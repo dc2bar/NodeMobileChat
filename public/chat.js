@@ -3,6 +3,7 @@ $(function () {
   var field = $("#field");
   var sendButton = $("#send");
   var content = $("#content");
+  var usersList = $('#users');
 
   socket.on('disconnect', function () {
     console.log('disconnected from server');
@@ -17,11 +18,13 @@ $(function () {
   });
 
   socket.on('systemMessage', function (message) {
+    console.log('SYSTEM: ' + message);
     addChat('chat', message, 'SYSTEM');
   });
 
   socket.on('updateUsersList', function (data) {
-    updateUsersList(data);
+    var users = updateUsersList(data);
+    usersList.empty().html(users);
   });
 
   sendButton.click(function () {
@@ -41,5 +44,9 @@ function addChat(type, data, username) {
 }
 
 function updateUsersList(data) {
-  console.log(data);
+  var userslist = '';
+  data.each( function (id,user) {
+    userslist += '<div class="'+username+' userslist-line" data-sid="'+id+'"><span class="username">'+user+'</span></div>';
+  });
+  return userslist;
 }
