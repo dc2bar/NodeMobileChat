@@ -28,9 +28,6 @@ var connectedUsers = {};
 var chatlog = [];
 var currentMsgID = 0;
 
-//Chat seesion variables
-var messageOnConnect = 'Connected to Node Chat';
-
 //Socket I/O - the bread and butter of chat
 //NOTE: When user connects, a unique socket is created for them and persists until disconnection
 io.sockets.on('connection', function (socket) {
@@ -42,9 +39,6 @@ io.sockets.on('connection', function (socket) {
       sendMessage('chatMessage', 'SYSTEM', username + ' has connected');
     }
   });
-
-  //show MOTD on connect
-  sendMessage('chatMessage','MOTD', messageOnConnect);
 
   //When this client sends a chat message
   socket.on('sendChat', function (data) {
