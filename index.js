@@ -53,6 +53,8 @@ function updateUsers(action, username, sessionID) {
   var userInList = false;
   for( var key in connectedUsers ) {
     var currentUsername = key;
+    console.log(key);
+    console.log(currentUsername);
     if ( currentUsername == key ) {
       userInList = true;
     }
