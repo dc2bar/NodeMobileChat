@@ -14,7 +14,8 @@ app.use(express.static(__dirname + '/public'));
 //initialize authentication, delegate session management to passport
 app.use(express.cookieParser());
 app.use(express.bodyParser());
-app.use(express.session({ secret: 'nkjnHKgBYIO*B^ggUYIfuF5' }));
+var store = new express.session.MemoryStore;
+app.use(express.session({ secret: 'nkjnHKgBYIO*B^ggUYIfuF5', store: store }));
 
 //initialize socket
 var io = require('socket.io').listen(app.listen(port));
@@ -40,6 +41,17 @@ var currentMsgID = 0;
 //Socket I/O - the bread and butter of chat
 //NOTE: When user connects, a unique socket is created for them and persists until disconnection
 io.sockets.on('connection', function (socket) {
+
+  socket.once('message', function(sid) {
+    store.get(sid, function(err, session) {
+      if (err || !session) {
+        console.log('something is fucked up.');
+        return;
+      }
+
+      console.log(session.username);
+    });
+  });
 
   //debug - display passed in params
   sendMessage('chatMessage', 'params', req.session.username);
