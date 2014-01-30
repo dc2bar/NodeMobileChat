@@ -1,30 +1,30 @@
+var socket = io.connect('/');
 $(function () {
-  var socket = io.connect('/');
   var field = $("#field");
   var sendButton = $("#send");
   var content = $("#content");
   var usersList = $('#users');
+  var currentUsername = prompt("Pick a Username (debug)","");
 
-  socket.on('disconnect', function () {
-    console.log('disconnected from server');
-  });
-
-  socket.emit('updateUsername', 'TESTUSER');
+  socket.emit('updateUsername', currentUsername);
 
   socket.on('chatMessage', function (username, message) {
     var message = addChat('chat', message, username);
-    console.log(message);
     content.append(message);
   });
 
   socket.on('systemMessage', function (message) {
-    console.log('SYSTEM: ' + message);
-    addChat('chat', message, 'SYSTEM');
+    var message = addChat('chat', message, 'SYSTEM');
+    content.append(message);
   });
 
   socket.on('updateUsersList', function (data) {
     var users = updateUsersList(data);
     usersList.empty().html(users);
+  });
+
+  socket.on('disconnect', function () {
+    console.log('disconnected from server');
   });
 
   sendButton.click(function () {
