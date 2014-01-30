@@ -26,7 +26,7 @@ var connectedUsers = {};
 //Chat in memory - server goes down, memory wiped, no logs. leftover from cryptochat
 //TODO: implement mongo DB and use hash or something for current msg id. this shit sucks.
 var chatlog = [];
-var currentMsgID = 1;
+var currentMsgID = 0;
 
 //Chat seesion variables
 var messageOnConnect = 'Connected to Node Chat';
