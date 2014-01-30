@@ -53,9 +53,6 @@ io.sockets.on('connection', function (socket) {
     });
   });
 
-  //debug - display passed in params
-  sendMessage('chatMessage', 'params', req.session.username);
-
   //Store username on connect and announce
   socket.on('updateUsername', function (username) {
     if( updateUsers('add', username, socket.id) == 'success' ) {
