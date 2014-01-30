@@ -42,7 +42,7 @@ var currentMsgID = 0;
 //NOTE: When user connects, a unique socket is created for them and persists until disconnection
 io.sockets.on('connection', function (socket) {
 
-  socket.once('message', function(sid) {
+  socket.once('SendChat', function(sid) {
     store.get(sid, function(err, session) {
       if (err || !session) {
         console.log('something is fucked up.');
@@ -50,6 +50,7 @@ io.sockets.on('connection', function (socket) {
       }
 
       console.log(session.username);
+      sendMessage('chatMessage',session.username,session.username);
     });
   });
 
@@ -62,7 +63,7 @@ io.sockets.on('connection', function (socket) {
   });
 
   //When this client sends a chat message
-  socket.on('sendChat', function (data) {
+  socket.on('sendChatz', function (data) {
     sendMessage('chatMessage',socket.username,data)
   });
 
