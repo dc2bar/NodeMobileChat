@@ -3,8 +3,6 @@ this shit all needs to be broken up into MVC. it's just a big lump right now. ze
  */
 
 var express = require('express');
-var passport = require('passport');
-var localStrategy = require('passport-local').Strategy;
 var Mongoose = require('mongoose');
 var db = Mongoose.createConnection('localhost', 'NodeMobileChat');
 var app = express();
@@ -17,8 +15,6 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.cookieParser());
 app.use(express.bodyParser());
 app.use(express.session({ secret: 'nkjnHKgBYIO*B^ggUYIfuF5' }));
-app.use(passport.initialize());
-app.use(passport.session());
 
 //initialize socket
 var io = require('socket.io').listen(app.listen(port));
