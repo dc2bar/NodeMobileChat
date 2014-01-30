@@ -58,6 +58,7 @@ io.sockets.on('connection', function (socket) {
   // TODO: think of a way to prevent mobile temporary disconnect spam. timer/heartbeat sync event?
   socket.on('disconnect', function () {
     updateUsers('delete', socket.username, socket.id)
+    sendMessage('chatMessage', 'SYSTEM', socket.username + ' has disconnected.');
   });
 });
 
