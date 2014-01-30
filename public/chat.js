@@ -7,6 +7,7 @@ $(function () {
   var currentUsername = prompt("Pick a Username (debug)","");
 
   socket.emit('updateUsername', currentUsername);
+  socket.emit('resync',0);
 
   socket.on('resyncChat', function (chatlog) {
     content.empty().append(resyncChat(chatlog));
