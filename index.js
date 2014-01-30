@@ -39,12 +39,12 @@ io.sockets.on('connection', function (socket) {
   socket.on('updateUsername', function (username) {
     if( updateUsers('add', username, socket.id) == 'success' ) {
       socket.username = username;
-      io.sockets.emit('systemMessage', username + ' has connected');
+      sendMessage('chatMessage', 'SYSTEM', username + ' has connected');
     }
   });
 
   //show MOTD on connect
-  socket.emit('systemMessage', messageOnConnect);
+  sendMessage('chatMessage','MOTD', messageOnConnect);
 
   //When this client sends a chat message
   socket.on('sendChat', function (data) {

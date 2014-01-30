@@ -18,11 +18,6 @@ $(function () {
     content.append(message);
   });
 
-  socket.on('systemMessage', function (message) {
-    var message = addChat('chat', message, 'SYSTEM');
-    content.append(message);
-  });
-
   socket.on('updateUsersList', function (data) {
     var users = updateUsersList(data);
     usersList.empty().html(users);
