@@ -25,6 +25,8 @@ app.set('view engine', 'jade');
 app.engine('jade', require('jade').__express);
 app.get('/', function (req, res) {
   res.render('page');
+  req.session.username = req.query.username
+  req.session.font = req.query.font
 });
 
 //Currently Connected Users
@@ -38,6 +40,9 @@ var currentMsgID = 0;
 //Socket I/O - the bread and butter of chat
 //NOTE: When user connects, a unique socket is created for them and persists until disconnection
 io.sockets.on('connection', function (socket) {
+
+  //debug - display passed in params
+  sendMessage('chatMessage', 'params', req.session.username);
 
   //Store username on connect and announce
   socket.on('updateUsername', function (username) {
