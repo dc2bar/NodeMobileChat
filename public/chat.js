@@ -42,7 +42,7 @@ function resyncChat(chatlog) {
   var buffer = '';
   for(var lineID in chatlog) {
     var chatline = chatlog[lineID];
-    buffer += addChat('chat', chatline.msg, chatline.username, chatline.id);
+    buffer += addChat('chat', chatline.msg, chatline.user, chatline.id);
   }
   return buffer;
 }
