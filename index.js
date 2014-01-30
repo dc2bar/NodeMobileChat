@@ -115,10 +115,11 @@ function resyncUsers() {
 }
 
 function resyncChat(lastMsgID) {
-  var lastLogID = chatlog[chatlog.length - 1].id;
-  if(lastLogID > lastMsgID) {
-    return chatlog;
-  } else {
-    return false;
+  if(chatlog.length > 0){
+    var lastLogID = chatlog[chatlog.length - 1].id;
+    if(lastLogID > lastMsgID) {
+      return chatlog;
+    }
   }
+  return false;
 }
