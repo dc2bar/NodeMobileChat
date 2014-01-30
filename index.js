@@ -101,7 +101,7 @@ function updateUsers(action, username, sessionID) {
 
 function sendMessage(type,username,message) {
   chatlog.push(
-      {id: currentMsgID, msg: message}
+      {id: currentMsgID, user: username, msg: message}
   );
   io.sockets.emit( type, username, message, currentMsgID );
   if(chatlog.length > 50) {

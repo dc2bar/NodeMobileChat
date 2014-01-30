@@ -8,6 +8,10 @@ $(function () {
 
   socket.emit('updateUsername', currentUsername);
 
+  socket.on('resyncChat', function (chatlog) {
+    content.empty().append(resyncChat(chatlog));
+  });
+
   socket.on('chatMessage', function (username, message, id) {
     var message = addChat('chat', message, username, id);
     content.append(message);
@@ -32,6 +36,15 @@ $(function () {
     socket.emit('sendChat', text);
   });
 });
+
+function resyncChat(chatlog) {
+  var buffer = '';
+  for(var lineID in chatlog) {
+    var chatline = chatlog[lineID];
+    buffer += addChat('chat', chatline.msg, chatline.username, chatline.id);
+  }
+  return buffer;
+}
 
 function addChat(type, data, username, id) {
   var message = '';
