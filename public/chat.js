@@ -8,8 +8,8 @@ $(function () {
 
   socket.emit('updateUsername', currentUsername);
 
-  socket.on('chatMessage', function (username, message) {
-    var message = addChat('chat', message, username);
+  socket.on('chatMessage', function (username, message, id) {
+    var message = addChat('chat', message, username, id);
     content.append(message);
   });
 
@@ -33,14 +33,14 @@ $(function () {
   });
 });
 
-function addChat(type, data, username) {
+function addChat(type, data, username, id) {
   var message = '';
   switch (type) {
     case 'chat':
       message = data;
       break;
   }
-  return '<div class="'+username+' chat-line"><span class="username">'+username+': </span><span class="message">'+message+'</span></div>';
+  return '<div id="chatline-'+id+'" class="'+username+' chat-line"><span class="username">'+username+': </span><span class="message">'+message+'</span></div>';
 }
 
 function updateUsersList(data) {
