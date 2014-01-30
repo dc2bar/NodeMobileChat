@@ -1,3 +1,7 @@
+/*
+this shit all needs to be broken up into MVC. it's just a big lump right now. zero fucks given. work now, refactor later.
+ */
+
 var express = require('express');
 var app = express();
 var port = 80;
@@ -18,6 +22,11 @@ app.get('/', function (req, res) {
 
 //Currently Connected Users
 var connectedUsers = {};
+
+//Chat in memory - server goes down, memory wiped, no logs. leftover from cryptochat
+//TODO: implement mongo DB and use hash or something for current msg id. this shit sucks.
+var chatlog = [];
+var currentMsgID = 1;
 
 //Chat seesion variables
 var messageOnConnect = 'Connected to Node Chat';
@@ -42,7 +51,17 @@ io.sockets.on('connection', function (socket) {
     io.sockets.emit('chatMessage', socket.username, data);
   });
 
-  // When the user disconnects - TODO: think of a way to prevent mobile temporary disconnect spam
+  //when client requests chat resync
+  socket.on('resync', function (lastReceived) {
+    var chatSyncData = resyncChat(lastReceived);
+    if( chatSyncData ) {
+      socket.emit('resyncChat', chatSyncData);
+    };
+    resyncUsers();
+  });
+
+  // When the user disconnects
+  // TODO: think of a way to prevent mobile temporary disconnect spam. timer/heartbeat sync event?
   socket.on('disconnect', function () {
     updateUsers('delete', socket.username, socket.id)
   });
@@ -61,7 +80,7 @@ function updateUsers(action, username, sessionID) {
     case 'add':
       if( !userInList ) {
         connectedUsers[sessionID] = username;
-        io.sockets.emit('updateUsersList',connectedUsers);
+        resyncUsers();
       } else {
         console.log('attempted to add user ' + username + ' with session id ' + sessionID + ' to active users when following user exists: ');
         console.log(userInList);
@@ -73,9 +92,33 @@ function updateUsers(action, username, sessionID) {
         console.log(userInList);
       } else {
         delete connectedUsers[sessionID];
-        io.sockets.emit('updateUsersList',connectedUsers);
+        resyncUsers();
         io.sockets.emit('systemMessage', username + ' has disconnected.');
       }
       return 'success';
+  }
+}
+
+function sendMessage(type,username,message) {
+  chatlog.push(
+      {id: currentMsgID, msg: message}
+  );
+  io.sockets.emit( type, username, message, currentMsgID );
+  if(chatlog.length > 50) {
+    chatlog.slice();
+  }
+  currentMsgID++;
+}
+
+function resyncUsers() {
+  io.sockets.emit('updateUsersList',connectedUsers);
+}
+
+function resyncChat(lastMsgID) {
+  var lastLogID = chatlog[chatlog.length - 1].id;
+  if(lastLogID > lastMsgID) {
+    return chatlog;
+  } else {
+    return false;
   }
 }
