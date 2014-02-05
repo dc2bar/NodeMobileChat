@@ -77,7 +77,7 @@ $( function() {
       if(!data.clients) {
         console.log('ERROR: got no clients back!');
       } else {
-        this.render(data.clients);
+        userlist.render(data.clients);
       }
     }
   })
