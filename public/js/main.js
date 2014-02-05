@@ -7,7 +7,7 @@ $( function() {
 
   var loginView = Backbone.View.extend({
     el: '#login',
-    nickname: '',
+    username: '',
 
     events: {
       'click .btn.login': 'login',
@@ -27,15 +27,15 @@ $( function() {
     },
 
     login: function() {
-      this.nickname = this.$('#username').val() || 'johndoe' + parseInt(Math.random() * 10);
+      this.username = this.$('#username').val() || 'johndoe' + parseInt(Math.random() * 10);
       socket.emit('login attempt', {
-        nickname: this.nickname
+        username: this.username
       });
       return false;
     },
 
     loginOk: function(data) {
-      console.log(data.nickname + " logged in");
+      console.log(data.username + " logged in");
     },
 
     loginError: function(data) {
@@ -44,7 +44,7 @@ $( function() {
 
     logout: function() {
       socket.emit('logout attempt', {
-        nickname: this.nickname
+        username: this.username
       });
       return false;
     },
@@ -57,7 +57,7 @@ $( function() {
 
   var userlistView = Backbone.View.extend({
     el: '#userlist',
-    nickname: '',
+    username: '',
 
     events: {
       'click .user': 'privateMessage'
