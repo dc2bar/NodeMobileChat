@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 exports.userSchema = new mongoose.Schema({
   socket_id: '',
-  nickname: '',
+  username: '',
   font: '',
   level: ''
 });

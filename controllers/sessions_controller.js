@@ -2,17 +2,17 @@ var userModel = require('../models/user_model').userModel;
 
 // Someone tries to login
 exports.login = function(io, socket, data) {
-  // No nickname? Sorry
-  if (!data.nickname) {
+  // No username? Sorry
+  if (!data.username) {
     socket.emit('error', {
-      message: 'no nickname provided'
+      message: 'no username provided'
     });
     return;
   }
 
-  // Seach for duplicate nicknames
+  // Seach for duplicate usernames
   userModel.findOne({
-    nickname: data.nickname
+    username: data.username
   }, function(err, doc) {
     // Oops...
     if (err) {
@@ -22,12 +22,12 @@ exports.login = function(io, socket, data) {
       return;
     }
 
-    // Duplicated nickname :(
+    // Duplicated username :(
     if (doc) {
-      console.warn('nickname in use, orphan records?', doc.nickname);
+      console.warn('username in use, orphan records?', doc.username);
 
       socket.emit('login error', {
-        message: 'nickname in use'
+        message: 'username in use'
       });
       return;
     }
@@ -35,15 +35,15 @@ exports.login = function(io, socket, data) {
     // So far, so good! Save new client for future references
     var user = new userModel();
 
-    user.nickname = data.nickname;
+    user.username = data.username;
     user.socket_id = socket.id;
-    user.font = "#0000FF|b";
+    user.font = "#0000FF";
     user.level = "user";
 
     user.save(function() {
       // And inform the client :)
       socket.emit('login ok', {
-        nickname: data.nickname
+        username: data.username
       });
 
       // And finally, broadcast a clients update
@@ -89,7 +89,7 @@ exports.disconnect = function(io, socket, data) {
       return;
     }
 
-    // Remove the client from DB to release the nickname
+    // Remove the client from DB to release the username
     doc.remove(function() {
       socket.emit('logout ok');
     });

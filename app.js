@@ -27,7 +27,10 @@ app.configure(function() {
  * Startup
  */
 console.log('NodeChat started. Listening on port ' + port);
+
+//reset DB on fresh boot
 var user = new userModel();
+user.collection.drop();
 
 /*************
  * Socket I/O

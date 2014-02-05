@@ -68,13 +68,17 @@ $( function() {
       socket.on('clients', this.updateClients);
     },
 
-    render: function() {
-      var template = Handlebars.templates['login_modal'];
-      $(this.el).html(template());
+    render: function(users) {
+      var template = Handlebars.templates['userlist'];
+      $(this.el).html(template(users));
     },
 
     updateClients: function (data) {
-      console.log(data);
+      if(!data.clients) {
+        console.log('ERROR: got no clients back!');
+      } else {
+        this.render(data.clients);
+      }
     }
   })
 
