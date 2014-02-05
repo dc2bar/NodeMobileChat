@@ -17,6 +17,11 @@ var sessions = require('./controllers/sessions_controller'),
 //Models
 var user = require('./models/user_model').userModel;
 
+//Routes
+app.configure(function() {
+  app.use(express.static(__dirname + '/public'));
+});
+
 /*************
  * Startup
  */
