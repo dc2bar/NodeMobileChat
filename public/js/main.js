@@ -19,6 +19,8 @@ var LoginView = Backbone.View.extend({
   render: function() {
     var template = Handlebars.templates['login_modal'];
     this.el.html(template());
+    console.log(template());
+    alert('rendered');
   },
 
   login: function() {
