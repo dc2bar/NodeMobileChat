@@ -1,5 +1,31 @@
 var userModel = require('../models/user_model').userModel;
 
+var user = new userModel();
+user.socket_id = 'asdf';
+user.nickname = 'my nickname';
+user.font = 'my font';
+user.level = 'admin';
+user.save(function(error,user) {
+  if(error) {
+    console.log('Save Error!');
+    console.log(error);
+  } else {
+    console.log('user saved without error: ');
+    console.log(user);
+  }
+});
+
+userModel.find({}, function(error, results) {
+  if(error) {
+    console.log('find error!');
+    console.log(error);
+  } else {
+    console.log('find results:');
+    console.log(results);
+  }
+});
+
+/*
 // Someone tries to login
 exports.login = function(io, socket, data) {
   // No nickname? Sorry
@@ -102,4 +128,4 @@ exports.disconnect = function(io, socket, data) {
     // Broadcast current clients
     exports.clients(io, socket);
   });
-}
+}*/
