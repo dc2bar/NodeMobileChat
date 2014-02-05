@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
-exports.userSchema = new mongoose.schema({
-  _id: mongoose.schema.objectId,
+exports.userSchema = new mongoose.Schema({
+  _id: mongoose.Schema.ObjectId,
   socket_id: '',
   nickname: '',
   font: '',

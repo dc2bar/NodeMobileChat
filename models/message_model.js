@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
-exports.messageSchema = new mongoose.schema({
-  _id: mongoose.schema.objectId,
+exports.messageSchema = new mongoose.Schema({
+  _id: mongoose.Schema.ObjectId,
   nickname: '',
   target: '',
   message: '',
