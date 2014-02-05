@@ -8,19 +8,7 @@ var express = require('express'),
 
 //Database
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/nodeChat');
-var db = mongoose.connection;
-db.on('open', function(){
-  mongoose.connection.db.collectionNames(function(error, names) {
-    if (error) {
-      throw new Error(error);
-    } else {
-      names.map(function(cname) {
-        console.log(cname.name);
-      });
-    }
-  });
-});
+mongoose.connect('mongodb://localhost/haiChat');
 
 
 //Controllers

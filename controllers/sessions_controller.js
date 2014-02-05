@@ -11,8 +11,9 @@ exports.login = function(io, socket, data) {
   }
 
   // Seach for duplicate nicknames
-  console.log(userModel);
-  userModel.find({}, function(err, doc) {
+  userModel.findOne({
+    nickname: data.nickname
+  }, function(err, doc) {
     // Oops...
     if (err) {
       socket.emit('error', {
@@ -37,11 +38,17 @@ exports.login = function(io, socket, data) {
     user.nickname = data.nickname;
     user.socket_id = socket.id;
 
+    console.log('user created:');
+    console.log(user);
+
     user.save(function() {
       // And inform the client :)
       socket.emit('login ok', {
         nickname: data.nickname
       });
+
+      console.log('user saved:');
+      console.log(user);
 
       // And finally, broadcast a clients update
       exports.clients(io, socket);
@@ -61,6 +68,8 @@ exports.clients = function(io, socket, data) {
     io.sockets.emit('clients', {
       clients: data
     });
+    console.log('clients list:');
+    console.log(data);
   });
 }
 
