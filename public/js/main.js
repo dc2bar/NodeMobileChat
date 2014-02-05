@@ -70,6 +70,7 @@ $( function() {
 
     render: function(users) {
       var template = Handlebars.templates['userlist'];
+      console.log(users);
       $(this.el).html(template(users));
     },
 
