@@ -2,17 +2,17 @@
 var port = 80;
 
 //application dependencies
-var express = require('express');
-var app = express.createServer();
-var io = require('socket.io').listen(app.listen(port));
+var express = require('express'),
+    app = express(),
+    io = require('socket.io').listen(app.listen(port));
 
 //Database
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/nodeChat');
 
 //Controllers
-var sessions = require('./controllers/sessions_controller');
-var messages = require('./controllers/messages_controller');
+var sessions = require('./controllers/sessions_controller'),
+    messages = require('./controllers/messages_controller');
 
 //Models
 var user = require('./models/user_model').userModel;
