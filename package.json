@@ -1,13 +1,13 @@
 {
-    "name": "NodeMobileChat",
-    "version": "0.0.1",
-    "description": "Chat for desktop and mobile running on node",
-    "dependencies": {
-        "socket.io": "latest",
-        "express": "latest",
-        "jade": "latest",
-        "mongodb": ">= 0.9.6-7",
-        "mongoose" : ">= 3.6"
-    },
-    "author": "Andrew Christopher Tran"
+  "name": "HAINodeChat",
+  "version": "0.0.1",
+  "description": "Chat for desktop and mobile running on node",
+  "dependencies": {
+    "socket.io": "latest",
+    "express": "latest",
+    "jade": "latest",
+    "mongodb": "latest",
+    "mongoose" : "latest"
+  },
+  "author": "Andrew Christopher Tran"
 }
