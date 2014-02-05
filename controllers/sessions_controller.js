@@ -13,7 +13,6 @@ exports.login = function(io, socket, data) {
   // Seach for duplicate nicknames
   console.log(userModel);
   userModel.find({}, function(err, doc) {
-    console.log(doc);
     // Oops...
     if (err) {
       socket.emit('error', {
