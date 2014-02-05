@@ -8,7 +8,7 @@ var express = require('express'),
 
 //Database
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/haiChat');
+mongoose.connect('mongodb://localhost/haiNodeChat');
 
 
 //Controllers
