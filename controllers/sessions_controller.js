@@ -68,9 +68,8 @@ exports.clients = function(io, socket, data) {
     io.sockets.emit('clients', {
       clients: data
     });
-    console.log('clients list:');
-    console.log(data);
   });
+  console.log(userModel);
 }
 
 // Oops, disconnected!
