@@ -37,6 +37,8 @@ exports.login = function(io, socket, data) {
 
     user.nickname = data.nickname;
     user.socket_id = socket.id;
+    user.font = "#0000FF|b";
+    user.level = "user";
 
     user.save(function() {
       // And inform the client :)
