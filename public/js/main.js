@@ -23,7 +23,7 @@ $( function() {
     },
 
     login: function() {
-      this.nickname = this.$('#nickname').val() || 'johndoe' + parseInt(Math.random() * 10);
+      this.nickname = this.$('#username').val() || 'johndoe' + parseInt(Math.random() * 10);
       socket.emit('login attempt', {
         nickname: this.nickname
       });
