@@ -19,7 +19,7 @@ $( function() {
 
     render: function() {
       var template = Handlebars.templates['login_modal'];
-      this.el.html(template());
+      $(this.el).html(template());
     },
 
     login: function() {
