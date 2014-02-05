@@ -15,7 +15,7 @@ var sessions = require('./controllers/sessions_controller'),
     messages = require('./controllers/messages_controller');
 
 //Models
-var user = require('./models/user_model').userModel;
+var userModel = require('./models/user_model').userModel;
 
 //Routes
 app.configure(function() {
@@ -26,6 +26,7 @@ app.configure(function() {
  * Startup
  */
 console.log('NodeChat started. Listening on port ' + port);
+var user = new userModel();
 
 /*************
  * Socket I/O
