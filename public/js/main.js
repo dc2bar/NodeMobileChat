@@ -70,8 +70,10 @@ $( function() {
 
     render: function(users) {
       var template = Handlebars.templates['userlist'];
-      console.log(users);
-      $(this.el).html(template(users));
+      for(var i in users){
+        console.log(users[i]);
+      }
+      $(this.el).html(template({users: users}));
     },
 
     updateClients: function (data) {
