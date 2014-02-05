@@ -1,6 +1,10 @@
 $( function() {
   var socket = io.connect('http://' + window.location.hostname + ':' + window.location.port);
 
+  /*
+    Views
+   */
+
   var loginView = Backbone.View.extend({
     el: '#login',
     nickname: '',
@@ -51,5 +55,29 @@ $( function() {
     }
   });
 
+  var userlistView = Backbone.View.extend({
+    el: '#userlist',
+    nickname: '',
+
+    events: {
+      'click .user': 'privateMessage'
+    },
+
+    initialize: function() {
+      this.render();
+      socket.on('clients', this.updateClients);
+    },
+
+    render: function() {
+      var template = Handlebars.templates['login_modal'];
+      $(this.el).html(template());
+    },
+
+    updateClients: function (data) {
+      console.log(data);
+    }
+  })
+
   var login = new loginView();
+  var userlist = new userlistView();
 });

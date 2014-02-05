@@ -63,7 +63,6 @@ exports.clients = function(io, socket, data) {
       clients: data
     });
   });
-  console.log(userModel);
 }
 
 // Oops, disconnected!
