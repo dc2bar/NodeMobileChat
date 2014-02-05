@@ -31,9 +31,7 @@ $( function() {
     },
 
     loginOk: function(data) {
-      this.$('.login-form').hide();
-      this.$('.logout-form').show();
-      this.$('.nickname-display').text(data.nickname);
+      console.log(data.nickname + " logged in");
     },
 
     loginError: function(data) {
