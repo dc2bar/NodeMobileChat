@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 exports.userSchema = new mongoose.Schema({
   socket_id: '',
   username: '',
-  font: '',
+  color: '',
   level: ''
 });
 
