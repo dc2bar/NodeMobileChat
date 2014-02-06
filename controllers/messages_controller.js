@@ -86,6 +86,7 @@ exports.privateMessage = function(io, socket, data) {
     // Prepare message
     var message = {
       username: document.username,
+      color: document.color,
       recipient: data.recipient,
       message: data.message,
       timestamp: Date.now()

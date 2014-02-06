@@ -98,6 +98,7 @@ $( function() {
     sendChat: function(e){
       if((e.type == 'keypress' && e.keyCode == 13) || (e.type == 'click' && e.target.id == 'send-chat-button')) {
         var message = $('#chat-input',this.el).val();
+        $('#chat-input',this.el).val('');
         socket.emit('message',{message: message});
       }
     },
