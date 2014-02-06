@@ -95,7 +95,8 @@ $( function() {
       socket.on('message', this.chatReceived);
     },
 
-    sendChat: function(){
+    sendChat: function(e){
+      console.log(e);
       socket.emit('message',{message: 'test message'});
     },
 
