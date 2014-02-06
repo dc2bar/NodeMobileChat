@@ -124,6 +124,7 @@ $( function() {
     chatReceived: function (data) {
       var template = Handlebars.templates['chat_line'];
       $('.chat-text',this.el).append(template(data));
+      $(".chat-text").scrollTop($(".chat-text")[0].scrollHeight);
     }
   })
 

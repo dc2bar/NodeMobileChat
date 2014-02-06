@@ -1,0 +1,23 @@
+.chat-text {
+    height: 90%;
+    width: 100%;
+    overflow: scroll;
+}
+.chat-bar {
+    height: 10%;
+    width: 100%;
+}
+
+.username {
+    font-weight: bold;
+    float:left;
+}
+
+.timestamp {
+    font-weight: bold;
+    float:left;
+}
+
+.message {
+    float:left;
+}
