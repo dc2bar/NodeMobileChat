@@ -41,18 +41,17 @@ $( function() {
           return false;
         },
         onChange: function (hsb, hex, rgb) {
-          console.log(hsb);
           console.log(hex);
-          console.log(rgb);
           $('#colorSelector div').css('backgroundColor', '#' + hex);
           this.color = hex;
+          console.log(this.color);
         }
       });
     },
 
     login: function() {
+      console.log(this.color);
       this.username = this.$('#username').val() || 'johndoe' + parseInt(Math.random() * 10);
-      this.color =
       socket.emit('login attempt', {
         username: this.username,
         color: this.color
