@@ -15,7 +15,7 @@ Handlebars.registerHelper("formatTimestamp", function(timestamp) {
     return ( time[0] + ":" + time[1] + ":" + time[2] + letters );
   }
 
-  var d = new Date(1391654210697);
+  var d = new Date(timestamp);
 
   var h = addZero(d.getHours());
   var m = addZero(d.getMinutes());
