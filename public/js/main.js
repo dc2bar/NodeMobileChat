@@ -94,16 +94,7 @@ $( function() {
     },
 
     initialize: function() {
-      this.render();
       socket.on('message', this.chatRecieved);
-    },
-
-    render: function(users) {
-      var template = Handlebars.templates['userlist'];
-      for(var i in users){
-        console.log(users[i]);
-      }
-      $(this.el).html(template({users: users}));
     },
 
     sendChat: function(e){
@@ -117,4 +108,5 @@ $( function() {
 
   var login = new loginView();
   var userlist = new userlistView();
+  var messages = new messagesView();
 });
