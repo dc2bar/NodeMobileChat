@@ -34,6 +34,7 @@ exports.message = function(io, socket, data) {
     // Prepare message
     var message = {
       username: document.username,
+      color: document.color,
       message: data.message,
       timestamp: Date.now()
     }
