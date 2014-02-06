@@ -9,17 +9,17 @@
     width: 100%;
 }
 
-.username {
+.chat-line .username {
     font-weight: bold;
     float:left;
 }
 
-.timestamp {
+.chat-line .timestamp {
     font-weight: bold;
     float:left;
 }
 
-.message {
+.chat-line .message {
     float:left;
 }
 
