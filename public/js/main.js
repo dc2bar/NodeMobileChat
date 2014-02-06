@@ -89,7 +89,8 @@ $( function() {
     el: '#messages',
 
     events: {
-      'keypress .btn.send' : 'sendChat'
+      'keypress #chat-input' : 'sendChat',
+      'click .btn.send' : 'sendChat'
     },
 
     initialize: function() {
@@ -106,9 +107,7 @@ $( function() {
     },
 
     sendChat: function(e){
-      if ( e.which === 13 ) {
-        socket.emit('message','test message');
-      }
+      socket.emit('message','test message');
     },
 
     chatRecieved: function (data) {
