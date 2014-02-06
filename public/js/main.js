@@ -96,14 +96,14 @@ $( function() {
 
     initialize: function() {
       _.bindAll(this, 'chatReceived');
-      socket.on('message', this.chatRecieved);
+      socket.on('message', this.chatReceived);
     },
 
     sendChat: function(){
       socket.emit('message',{message: 'test message'});
     },
 
-    chatRecieved: function (data) {
+    chatReceived: function (data) {
       var template = Handlebars.templates['chat_line'];
       $(this.el).append(template(data));
     }
