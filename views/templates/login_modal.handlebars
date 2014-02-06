@@ -1,4 +1,25 @@
-<h1>Login</h1>
-<input type="text" id="username" />
-<label>Chat Color: </label><div id="colorSelector" class="color-picker"><div></div></div>
-<div class="btn login">login</div>
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Login</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Pick a Username">
+          </div>
+          <div class="form-group">
+            <label for="colorSelector">Chat Color</label>
+            <div id="colorSelector" class="color-picker"><div></div></div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default login" data-dismiss="modal">Login</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
