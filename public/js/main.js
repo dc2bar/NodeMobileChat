@@ -60,6 +60,7 @@ $( function() {
 
     loginOk: function(data) {
       console.log(data.username + ' logged in');
+      this.remove();
     },
 
     loginError: function(data) {
