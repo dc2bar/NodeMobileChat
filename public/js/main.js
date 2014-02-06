@@ -71,9 +71,6 @@ $( function() {
 
     render: function(users) {
       var template = Handlebars.templates['userlist'];
-      for(var i in users){
-        console.log(users[i]);
-      }
       $(this.el).html(template({users: users}));
     },
 
@@ -105,7 +102,7 @@ $( function() {
 
     chatReceived: function (data) {
       var template = Handlebars.templates['chat_line'];
-      $(this.el).append(template(data));
+      $('.chat-text',this.el).append(template(data));
     }
   })
 
