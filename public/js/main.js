@@ -105,7 +105,7 @@ $( function() {
 
     events: {
       'keypress #chat-input' : 'sendChat',
-      'click .btn.send' : 'sendChat'
+      'click #send-chat-button' : 'sendChat'
     },
 
     initialize: function() {
