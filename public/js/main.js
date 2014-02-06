@@ -41,6 +41,9 @@ $( function() {
           return false;
         },
         onChange: function (hsb, hex, rgb) {
+          console.log(hsb);
+          console.log(hex);
+          console.log(rgb);
           $('#colorSelector div').css('backgroundColor', '#' + hex);
           this.color = hex;
         }
