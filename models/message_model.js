@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 exports.messageSchema = new mongoose.Schema({
   username: '',
-  target: '',
+  recipient: '',
   message: '',
   timestamp: ''
 });

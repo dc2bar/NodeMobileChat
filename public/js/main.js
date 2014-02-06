@@ -85,6 +85,37 @@ $( function() {
     }
   })
 
+  var messagesView = Backbone.View.extend({
+    el: '#messages',
+
+    events: {
+      'keypress .btn.send' : 'sendChat'
+    },
+
+    initialize: function() {
+      this.render();
+      socket.on('message', this.chatRecieved);
+    },
+
+    render: function(users) {
+      var template = Handlebars.templates['userlist'];
+      for(var i in users){
+        console.log(users[i]);
+      }
+      $(this.el).html(template({users: users}));
+    },
+
+    sendChat: function(e){
+      if ( e.which === 13 ) {
+        socket.emit('message','test message');
+      }
+    },
+
+    chatRecieved: function (data) {
+      console.log(data);
+    }
+  })
+
   var login = new loginView();
   var userlist = new userlistView();
 });

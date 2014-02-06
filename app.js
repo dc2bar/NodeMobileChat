@@ -58,7 +58,7 @@ io.sockets.on('connection', function(socket) {
   });
 
   // Private Chat Message
-  socket.on('message', function(data) {
+  socket.on('privateMessage', function(data) {
     messages.privateMessage(io, socket, data);
   });
 
