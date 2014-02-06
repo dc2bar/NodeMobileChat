@@ -104,6 +104,7 @@ $( function() {
     chatRecieved: function (data) {
       var template = Handlebars.templates['chat_line'];
       $(this.el).append(template(data));
+      console.log(template(data));
     }
   })
 
