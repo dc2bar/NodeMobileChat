@@ -8,6 +8,7 @@ $( function() {
   var loginView = Backbone.View.extend({
     el: '#login',
     username: '',
+    color: '#000000',
 
     events: {
       'click .btn.login': 'login',
@@ -15,6 +16,7 @@ $( function() {
     },
 
     initialize: function() {
+      _.bindAll(this, 'activateColors');
       this.render();
       socket.on('login ok', this.loginOk);
       socket.on('login error', this.loginError);
@@ -40,14 +42,17 @@ $( function() {
         },
         onChange: function (hsb, hex, rgb) {
           $('#colorSelector div').css('backgroundColor', '#' + hex);
+          this.color = hex;
         }
       });
     },
 
     login: function() {
       this.username = this.$('#username').val() || 'johndoe' + parseInt(Math.random() * 10);
+      this.color =
       socket.emit('login attempt', {
-        username: this.username
+        username: this.username,
+        color: this.color
       });
       return false;
     },
