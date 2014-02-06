@@ -12,7 +12,7 @@ Handlebars.registerHelper("formatTimestamp", function(timestamp) {
       time[0] = time[0] - 12;
       letters = "PM";
     }
-    return ( time[0] + ":" + time[1] + ":" + time[2] + letters );
+    return ( time[0] + ":" + time[1] + ":" + time[2] + " " + letters );
   }
 
   var d = new Date(timestamp);
