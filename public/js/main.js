@@ -57,7 +57,6 @@ $( function() {
 
   var userlistView = Backbone.View.extend({
     el: '#userlist',
-    username: '',
 
     events: {
       'click .user': 'privateMessage'
