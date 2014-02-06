@@ -30,6 +30,7 @@ $( function() {
     },
 
     activateColors: function() {
+      var that = this;
       $('#colorSelector', this.el).ColorPicker({
         color: '#FFFFFF',
         onShow: function (colpkr) {
@@ -41,16 +42,13 @@ $( function() {
           return false;
         },
         onChange: function (hsb, hex, rgb) {
-          console.log(hex);
           $('#colorSelector div').css('backgroundColor', '#' + hex);
-          this.color = hex;
-          console.log(this.color);
+          that.color = hex;
         }
       });
     },
 
     login: function() {
-      console.log(this.color);
       this.username = this.$('#username').val() || 'johndoe' + parseInt(Math.random() * 10);
       socket.emit('login attempt', {
         username: this.username,
