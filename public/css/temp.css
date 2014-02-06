@@ -39,3 +39,11 @@
     height: 100%;
     border-left: 1px solid #dedede;
 }
+
+.chat-input {
+    width: 90%;
+}
+
+.send {
+    width: 10%;
+}
