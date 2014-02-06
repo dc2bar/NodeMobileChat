@@ -29,7 +29,7 @@ $( function() {
 
     activateColors: function() {
       $('#colorSelector', this.el).ColorPicker({
-        color: '#0000ff',
+        color: '#FFFFFF',
         onShow: function (colpkr) {
           $(colpkr).fadeIn(500);
           return false;
