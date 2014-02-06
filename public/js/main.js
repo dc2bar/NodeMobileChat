@@ -96,7 +96,8 @@ $( function() {
     },
 
     sendChat: function(e){
-      console.log(e.type);
+      console.log(e);
+      if(e.type == 'keypress')
       socket.emit('message',{message: 'test message'});
     },
 
