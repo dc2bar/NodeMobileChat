@@ -64,6 +64,7 @@ $( function() {
     },
 
     initialize: function() {
+      _.bindAll(this, 'updateClients');
       this.render();
       socket.on('clients', this.updateClients);
     },
@@ -80,7 +81,7 @@ $( function() {
       if(!data.clients) {
         console.log('ERROR: got no clients back!');
       } else {
-        userlist.render(data.clients);
+        this.render(data.clients);
       }
     }
   })
@@ -94,6 +95,7 @@ $( function() {
     },
 
     initialize: function() {
+      _.bindAll(this, 'chatReceived');
       socket.on('message', this.chatRecieved);
     },
 
@@ -102,10 +104,8 @@ $( function() {
     },
 
     chatRecieved: function (data) {
-      console.log(data);
       var template = Handlebars.templates['chat_line'];
       $(this.el).append(template(data));
-      console.log(template(data));
     }
   })
 
