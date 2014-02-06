@@ -1,5 +1,4 @@
 Handlebars.registerHelper("formatTimestamp", function(timestamp) {
-
   function addZero(number) {
     if(number < 10) {
       return ( "0" + number );
