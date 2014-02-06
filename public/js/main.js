@@ -35,7 +35,7 @@ $( function() {
     },
 
     loginOk: function(data) {
-      console.log(data.username + " logged in");
+      console.log(data.username + ' logged in');
     },
 
     loginError: function(data) {
@@ -96,9 +96,10 @@ $( function() {
     },
 
     sendChat: function(e){
-      console.log(e);
-      if(e.type == 'keypress')
-      socket.emit('message',{message: 'test message'});
+      if((e.type == 'keypress' && e.keyCode == 13) || (e.type == 'click' && e.target.id == 'send-chat-button')) {
+        var message = $('#chat-input',this.el);
+        socket.emit('message',{message: message});
+      }
     },
 
     chatReceived: function (data) {
