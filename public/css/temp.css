@@ -21,3 +21,7 @@
 .message {
     float:left;
 }
+
+.chat-line div {
+    margin-left: 10px;
+}
