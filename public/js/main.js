@@ -24,6 +24,24 @@ $( function() {
     render: function() {
       var template = Handlebars.templates['login_modal'];
       $(this.el).html(template());
+      this.activateColors();
+    },
+
+    activateColors: function() {
+      $('#colorSelector', this.el).ColorPicker({
+        color: '#0000ff',
+        onShow: function (colpkr) {
+          $(colpkr).fadeIn(500);
+          return false;
+        },
+        onHide: function (colpkr) {
+          $(colpkr).fadeOut(500);
+          return false;
+        },
+        onChange: function (hsb, hex, rgb) {
+          $('#colorSelector div').css('backgroundColor', '#' + hex);
+        }
+      });
     },
 
     login: function() {
