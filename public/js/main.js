@@ -24,6 +24,7 @@ $( function() {
     },
 
     render: function() {
+      $(this.el).modal({ keyboard: false });
       var template = Handlebars.templates['login_modal'];
       $(this.el).html(template());
       this.activateColors();
