@@ -96,7 +96,7 @@ $( function() {
     },
 
     sendChat: function(e){
-      console.log(e);
+      console.log(e.type);
       socket.emit('message',{message: 'test message'});
     },
 
