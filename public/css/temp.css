@@ -76,10 +76,3 @@ html,body {
     height: 100%;
     width: 100%;
 }
-
-* { box-sizing: border-box; }
-
-.chat-bar { width: 100%; display: table;}
-.chat-bar .cell { display: table-cell; width: 100%; }
-.chat-bar textarea { width: 100%; }
-.chat-bar .send { color: black; white-space: nowrap; }
