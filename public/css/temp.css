@@ -81,5 +81,5 @@ html,body {
 
 .chat-bar { width: 100%; display: table;}
 .chat-bar div { display: table-cell; width: 100%; }
-.chat-bar input { width: 100%; }
+.chat-bar textarea { width: 100%; }
 .chat-bar .send { color: black; white-space: nowrap; }
