@@ -136,9 +136,12 @@ $( function() {
 
     checkLink: function (data) {
       var message = data.message;
+      console.log(message);
       if(message.substring(0,3) == 'http') {
         data.message = '<a href="'+message+'">'+message+'</a>';
+        console.log(data.message);
       }
+      console.log(data);
       return data;
     }
   })
