@@ -29,13 +29,11 @@
 
 #messages {
     float: left;
-    width: 80%;
     height: 100%;
 }
 
 #userlist {
     float:right;
-    width: 18%;
     height: 100%;
     border-left: 1px solid #dedede;
 }
