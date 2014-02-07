@@ -5,16 +5,20 @@
 </head>
 <body>
 <div id="login"></div>
-<div id="messages">
-  <div class="chat-text"></div>
-  <div class="chat-bar">
-    <div class="input-group">
-      <input id="chat-input" type="text" class="form-control">
-      <span id="send-chat-button" class="input-group-addon send">Send</span>
+<div class="container-fluid">
+  <div class="row">
+    <div id="messages" class="col-md-10">
+      <div class="chat-text"></div>
+      <div class="chat-bar">
+        <div class="input-group">
+          <input id="chat-input" type="text" class="form-control">
+          <span id="send-chat-button" class="input-group-addon send">Send</span>
+        </div>
+      </div>
     </div>
+    <div id="userlist" class="col-md-2"></div>
   </div>
 </div>
-<div id="userlist"></div>
 
 <!-- javascript -->
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
