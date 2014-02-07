@@ -20,6 +20,11 @@ html,body {
     height: 10%;
 }
 
+.chat-line {
+    padding: 5px 10px 5px 10px;
+    border-top: 1px solid #dedede;
+}
+
 .chat-line .username {
     font-weight: bold;
     float:left;
