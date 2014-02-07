@@ -129,20 +129,8 @@ $( function() {
 
     chatReceived: function (data) {
       var template = Handlebars.templates['chat_line'];
-      var checkedData = this.checkLink(data);
-      $('.chat-text',this.el).append(template(checkedData));
+      $('.chat-text',this.el).append(template(data));
       $(".chat-text").scrollTop($(".chat-text")[0].scrollHeight);
-    },
-
-    checkLink: function (data) {
-      var message = data.message;
-      console.log(message.substring(0,4).toLowerCase());
-      if(message.substring(0,4).toLowerCase() == 'http') {
-        data.message = '<a href="'+message+'">'+message+'</a>';
-        console.log(data.message);
-      }
-      console.log(data);
-      return data;
     }
   })
 
