@@ -16,7 +16,7 @@ $( function() {
     },
 
     initialize: function() {
-      _.bindAll(this, 'activateColors', 'loginOk', 'loginError');
+      _.bindAll(this, 'activateColors');
       this.render();
       socket.on('login ok', this.loginOk);
       socket.on('login error', this.loginError);
