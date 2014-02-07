@@ -129,8 +129,17 @@ $( function() {
 
     chatReceived: function (data) {
       var template = Handlebars.templates['chat_line'];
-      $('.chat-text',this.el).append(template(data));
+      var checkedData = this.checkLink(data);
+      $('.chat-text',this.el).append(template(checkedData));
       $(".chat-text").scrollTop($(".chat-text")[0].scrollHeight);
+    },
+
+    checkLink: function (data) {
+      var message = data.message;
+      if(message.substring(0,3) == 'http') {
+        message = '<a href="'+message+'">'+message+'</a>';
+      }
+      return message;
     }
   })
 
