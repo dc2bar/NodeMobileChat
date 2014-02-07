@@ -43,13 +43,10 @@ html,body {
 }
 
 #chat-input {
-    width: 90%;
     float: left;
 }
 
 #send-chat-button {
-    width: 10%;
-    float: left;
     text-align: center;
 }
 
@@ -79,3 +76,10 @@ html,body {
     height: 100%;
     width: 100%;
 }
+
+* { box-sizing: border-box; }
+
+.chat-bar { width: 100%; display: table; padding: 1em 0 0; }
+.chat-bar div { display: table-cell; width: 100%; }
+.chat-bar input { width: 100%; padding: .5em 1em; }
+.chat-bar button { color: black; padding: .5em 1em; white-space: nowrap; margin: 0 0 0 1em; }
