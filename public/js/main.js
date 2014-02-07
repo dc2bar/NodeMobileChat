@@ -33,7 +33,7 @@ $( function() {
     activateColors: function() {
       var that = this;
       $('#colorSelector', this.el).ColorPicker({
-        color: '#FFFFFF',
+        color: '#000000',
         onShow: function (colpkr) {
           $(colpkr).fadeIn(500);
           return false;
@@ -111,8 +111,7 @@ $( function() {
     el: '#messages',
 
     events: {
-      'keypress #chat-input' : 'sendChat',
-      'click #send-chat-button' : 'sendChat'
+      'keypress #chat-input' : 'sendChat'
     },
 
     initialize: function() {
@@ -121,7 +120,7 @@ $( function() {
     },
 
     sendChat: function(e){
-      if((e.type == 'keypress' && e.keyCode == 13) || (e.type == 'click' && e.target.id == 'send-chat-button')) {
+      if(e.keyCode == 13) {
         var message = $('#chat-input',this.el).val();
         $('#chat-input',this.el).val('');
         socket.emit('message',{message: message});
