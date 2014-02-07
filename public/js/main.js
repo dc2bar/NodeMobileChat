@@ -129,7 +129,18 @@ $( function() {
 
     chatReceived: function (data) {
       var template = Handlebars.templates['chat_line'];
-      $('.chat-text',this.el).append(template(data));
+      var chatLine = template(data);
+      if(chatLine.indexOf('http') != -1) {
+        var arrMessage = chatLine.split(' ');
+        for(var i in arrMessage) {
+          var word = arrMessage[i];
+          if(word.substring(0,5).toLowerCase() == 'http') {
+            arrMessage[i] = "<a href='"+word+"'>"+word+"</a>";
+          }
+        }
+        chatLine = arrMessage.join(' ');
+      }
+      $('.chat-text',this.el).append(chatLine);
       $(".chat-text").scrollTop($(".chat-text")[0].scrollHeight);
     }
   })
