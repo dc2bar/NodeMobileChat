@@ -47,3 +47,7 @@
 .send {
     width: 10%;
 }
+
+.colorpicker {
+    z-index: 50;
+}
