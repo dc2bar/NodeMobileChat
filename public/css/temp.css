@@ -42,12 +42,14 @@ body {
 #messages {
     float: left;
     height: 100%;
+    width: 90%;
 }
 
 #userlist {
     float:right;
     height: 100%;
     border-left: 1px solid #dedede;
+    width: 20%;
 }
 
 .colorpicker {
