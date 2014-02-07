@@ -29,8 +29,14 @@ body {
     margin-left: 10px;
 }
 
-#chat-input,#send-chat-button {
-    width: 100%;
+#chat-input {
+    width: 90%;
+    float: left;
+}
+
+#send-chat-button {
+    width: 10%;
+    float: left;
 }
 
 #messages {
