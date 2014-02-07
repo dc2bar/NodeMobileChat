@@ -137,9 +137,9 @@ $( function() {
     checkLink: function (data) {
       var message = data.message;
       if(message.substring(0,3) == 'http') {
-        message = '<a href="'+message+'">'+message+'</a>';
+        data.message = '<a href="'+message+'">'+message+'</a>';
       }
-      return message;
+      return data;
     }
   })
 
