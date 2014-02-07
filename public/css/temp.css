@@ -36,7 +36,7 @@ html,body {
 }
 
 .chat-line .timestamp {
-    font-weight: bold;
+    color: rgb(112, 112, 112)
 }
 
 .chat-line .message {
