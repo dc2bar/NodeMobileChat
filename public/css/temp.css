@@ -30,12 +30,12 @@ html,body {
 }
 
 #chat-input {
-    width: 90%;
+    width: 80%;
     float: left;
 }
 
 #send-chat-button {
-    width: 10%;
+    width: 20%;
     float: left;
 }
 
