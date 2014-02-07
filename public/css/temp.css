@@ -2,11 +2,11 @@ html,body {
     height: 100%;
 }
 
-#user-icon, #user-text {
+.user-icon, .user-text {
     float:left;
 }
 
-#user-timestamp {
+.user-timestamp {
     float:right;
 }
 
