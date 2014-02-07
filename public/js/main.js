@@ -136,8 +136,8 @@ $( function() {
 
     checkLink: function (data) {
       var message = data.message;
-      console.log(message.substring(0,3).toLowerCase());
-      if(message.substring(0,3).toLowerCase() == 'http') {
+      console.log(message.substring(0,4).toLowerCase());
+      if(message.substring(0,4).toLowerCase() == 'http') {
         data.message = '<a href="'+message+'">'+message+'</a>';
         console.log(data.message);
       }
