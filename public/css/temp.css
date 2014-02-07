@@ -2,8 +2,13 @@ html,body {
     height: 100%;
 }
 
-.user-icon, .user-text {
+.user-icon {
+    float: left;
+}
+
+.user-text {
     float:left;
+    margin: 0 10px 0 10px;
 }
 
 .user-timestamp {
