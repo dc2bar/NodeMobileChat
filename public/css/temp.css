@@ -23,6 +23,8 @@ html,body {
 .chat-bar {
     border-top: 1px solid #dedede;
     height: 10%;
+    padding: 0;
+    margin: 0;
 }
 
 .chat-line {
@@ -43,7 +45,7 @@ html,body {
 }
 
 #chat-input {
-    float: left;
+
 }
 
 #send-chat-button {
