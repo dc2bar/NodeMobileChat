@@ -45,11 +45,8 @@ html,body {
 }
 
 #chat-input {
-
-}
-
-#send-chat-button {
-    text-align: center;
+    height:100%;
+    width:100%;
 }
 
 #messages {
