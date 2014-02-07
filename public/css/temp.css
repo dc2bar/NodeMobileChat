@@ -43,13 +43,14 @@ html,body {
 }
 
 #chat-input {
-    width: 80%;
+    width: 90%;
     float: left;
 }
 
 #send-chat-button {
-    width: 20%;
+    width: 10%;
     float: left;
+    text-align: center;
 }
 
 #messages {
