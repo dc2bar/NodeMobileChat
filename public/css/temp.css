@@ -9,7 +9,6 @@ body {
 .chat-bar {
     border-top: 1px solid #dedede;
     height: 10%;
-    width: 100%;
 }
 
 .chat-line .username {
@@ -39,14 +38,6 @@ body {
     float:right;
     height: 100%;
     border-left: 1px solid #dedede;
-}
-
-.chat-input {
-    width: 90%;
-}
-
-.send {
-    width: 10%;
 }
 
 .colorpicker {
